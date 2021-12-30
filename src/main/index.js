@@ -1,12 +1,13 @@
 import './index.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-function MainpageComponent() {
+function MainPageComponent() {
     const [getData, setDataPuppy] = useState([]);
     useEffect(function () {
         axios
-            .get('https://71057566-4814-4374-bd4e-c5e359ff7d22.mock.pstmn.io/puppies')
+            .get('https://cc3ab12b-6e66-45c3-8ebd-795669040d5f.mock.pstmn.io/puppies')
             .then((result) => {
                 console.log('..... MainpageComponent [result]', result);
                 const puppyData = result.data.puppies;
@@ -20,21 +21,16 @@ function MainpageComponent() {
 
     return (
         <div>
-            <div id="header">
-                <div id="header-area">
-                    <img src="images/icons/logo.png" alt="logo" />
-                </div>
+            <div id="banner">
+                <img src="images/banners/banner1.png" alt="banner1" />
             </div>
-            <div id="container">
-                <div id="banner">
-                    <img src="images/banners/banner1.png" alt="banner1" />
-                </div>
-                <h1>사랑하는 애기들</h1>
-                <div id="puppy-list">
-                    {getData.map((puppy, idx) => {
-                        // console.log(puppy, idx);
-                        return (
-                            <div className="puppy-card">
+            <h1>사랑하는 애기들</h1>
+            <div id="puppy-list">
+                {getData.map((puppy, idx) => {
+                    // console.log(puppy, idx);
+                    return (
+                        <div className="puppy-card">
+                            <Link className="puppy-link" to={`/puppies/${puppy.id}`}>
                                 <div>
                                     <img className="puppy-img" src={puppy.imageUrl} alt="puppy" />
                                 </div>
@@ -49,14 +45,13 @@ function MainpageComponent() {
                                         <span className="puppy-date">2021-12</span>
                                     </div>
                                 </div>
-                            </div>
-                        );
-                    })}
-                </div>
+                            </Link>
+                        </div>
+                    );
+                })}
             </div>
-            <div id="footer"></div>
         </div>
     );
 }
 
-export default MainpageComponent;
+export default MainPageComponent;

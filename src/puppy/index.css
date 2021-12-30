@@ -1,0 +1,58 @@
+.tit-loading {
+    padding: 16px;
+    font-size: 20px;
+    color: #40b4d1;
+}
+.tit-page {
+    padding: 16px;
+    font-size: 20px;
+    color: #1a8fab;
+}
+
+#image-box {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#image-box > img {
+    /* width: 20px; */
+    height: 100%;
+}
+
+#profile-box {
+    padding: 16px;
+    margin-top: 8px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+
+}
+#profile-box > img {
+    width: 50px;
+    height: 50px;
+}
+#profile-box > span {
+    font-size: 15px;
+    margin-left: 8px;
+    font-weight: 600;
+}
+
+#cont-box {
+    padding: 16px;
+}
+#name {
+    font-size: 20px;
+    font-weight: 400;
+}
+#status {
+    font-size: 16px;
+    font-weight: 600;
+}
+#description {
+    margin-top: 16px;
+}
+#createdAt {
+    font-size: 12px;
+    color: #777;
+}
