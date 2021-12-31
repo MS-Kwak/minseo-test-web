@@ -1,10 +1,18 @@
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route, Link, useHistory } from 'react-router-dom';
+import 'antd/dist/antd.css';
 import './App.css';
 import MainPageComponent from './main/index.js';
 import PuppyPageComponent from './puppy/index.js';
 import UploadPageComponent from './upload/index.js';
+import { Button } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
 
 function App() {
+    const history = useHistory();
+    const fnClickBtn = function () {
+        history.push('/upload');
+    };
+
     return (
         <div>
             <div id="header">
@@ -12,6 +20,9 @@ function App() {
                     <Link to="/">
                         <img src="/images/icons/logo.png" alt="logo" />
                     </Link>
+                    <Button size="large" onClick={fnClickBtn} icon={<UploadOutlined />}>
+                        퍼피 업로드
+                    </Button>
                 </div>
             </div>
             <div id="container">
