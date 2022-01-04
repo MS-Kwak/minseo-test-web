@@ -2,12 +2,17 @@ import './index.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+
+dayjs.extend(relativeTime);
 
 function MainPageComponent() {
     const [getData, setDataPuppy] = useState([]);
     useEffect(function () {
         axios
-            .get('https://cc3ab12b-6e66-45c3-8ebd-795669040d5f.mock.pstmn.io/puppies')
+            // .get('https://cc3ab12b-6e66-45c3-8ebd-795669040d5f.mock.pstmn.io/puppies')
+            .get('http://localhost:8080/puppies')
             .then((result) => {
                 console.log('..... MainpageComponent [result]', result);
                 const puppyData = result.data.puppies;
@@ -15,7 +20,7 @@ function MainPageComponent() {
             })
             .catch((err) => {
                 console.error(err);
-                console.log('에러가 발생했어요!!');
+                console.log('[MainPageComponent] 에러가 발생했어요!!');
             });
     }, []);
 
@@ -42,7 +47,7 @@ function MainPageComponent() {
                                             <img className="puppy-avatar" src="images/icons/avatar.png" alt="avatar" />
                                             <span>{puppy.seller}</span>
                                         </div>
-                                        <span className="puppy-date">2021-12</span>
+                                        <span className="puppy-date">{dayjs(puppy.createdAt).fromNow()}</span>
                                     </div>
                                 </div>
                             </Link>

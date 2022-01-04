@@ -10,9 +10,10 @@ function PuppyPageComponent() {
 
     useEffect(function () {
         axios
-            .get(`https://cc3ab12b-6e66-45c3-8ebd-795669040d5f.mock.pstmn.io/puppies/${id}`)
+            // .get(`https://cc3ab12b-6e66-45c3-8ebd-795669040d5f.mock.pstmn.io/puppies/${id}`)
+            .get(`http://localhost:8080/puppies/${id}`)
             .then((result) => {
-                const puppyPageData = result.data;
+                const puppyPageData = result.data.puppy;
                 setData(puppyPageData);
             })
             .catch((err) => {
